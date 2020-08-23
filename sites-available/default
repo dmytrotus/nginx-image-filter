@@ -53,6 +53,15 @@ server {
 		try_files $uri $uri/ =404;
 	}
 
+	location /images {
+		root /home/dima/projects/imagecompressor.loc;
+		expires 1y;
+		add_header Pragma public;
+		add_header Cache-Control "public";
+		fastcgi_hide_header Set-Cookie;
+		try_files $uri =404;
+	}
+
 	# pass PHP scripts to FastCGI server
 	#
 	#location ~ \.php$ {
